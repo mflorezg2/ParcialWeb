@@ -13,6 +13,9 @@ import { AuthModule } from './auth/auth.module';
 
 import { UsersEntity } from './users/users.entity';
 import { RolesEntity } from './roles/roles.entity';
+import { AppointmentsModule } from './appointments/appointments.module';
+import { AppointmentsEntity } from './appointments/appointments.entity';
+
 
 @Module({
   imports: [
@@ -27,8 +30,8 @@ import { RolesEntity } from './roles/roles.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'parcials',
-      entities: [UsersEntity, RolesEntity],
-      dropSchema: false,
+      entities: [UsersEntity, RolesEntity, AppointmentsEntity],
+      dropSchema: true,
       synchronize: true,
     }),
 
@@ -36,6 +39,7 @@ import { RolesEntity } from './roles/roles.entity';
     UsersModule,
     RolesModule,
     UsersRolesModule,
+    AppointmentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

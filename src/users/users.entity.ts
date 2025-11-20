@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-
 import { RolesEntity } from 'src/roles/roles.entity';
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, OneToMany, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { AppointmentsEntity } from 'src/appointments/appointments.entity';
 
 @Entity()
 export class UsersEntity {
@@ -29,5 +29,8 @@ export class UsersEntity {
   @ManyToMany(()=>RolesEntity, role => role.users)
   @JoinTable()
   roles:RolesEntity[];
+
+  @OneToMany(() => AppointmentsEntity, appointment => appointment.user)
+  appointments: AppointmentsEntity[];
 
 }
